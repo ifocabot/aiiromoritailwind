@@ -1,0 +1,83 @@
+const { Client, LocalAuth, MessageMedia } = require("whatsapp-web.js"); // Menambahkan MessageMedia dari whatsapp-web.js
+const qrcode = require("qrcode-terminal");
+const axios = require("axios");
+const querystring = require("querystring");
+
+const client = new Client({
+  authStrategy: new LocalAuth(),
+});
+
+client.on("qr", (qr) => {
+  qrcode.generate(qr, { small: true });
+});
+
+client.on("message", async (message) => {
+  if (message.body.startsWith("/cekawb ")) {
+    const awb = message.body.split("/cekawb ")[1].trim().toUpperCase();
+
+    // Panggil API dengan nomor AWB, headers, dan body yang ditentukan
+    const apiUrl = `https://apiv2.jne.co.id:10205/tracing/api/list/v1/cnote/${awb}`;
+
+    const headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "User-Agent": "Laravel-Request",
+      Accept: "*/*",
+      Host: "apiv2.jne.co.id:10205",
+      // Tambahkan header lain yang dibutuhkan
+    };
+
+    const username = "RUPA";
+    const apikey = "19a6594938f819daaca6181d59060b68";
+
+    const payload = {
+      username: username,
+      api_key: apikey,
+      // Tambahkan data lain yang ingin Anda kirim sebagai body
+    };
+
+    const requestBody = querystring.stringify(payload);
+
+    // Panggil API dengan nomor AWB, headers, dan body yang ditentukan
+    try {
+      const response = await axios.post(apiUrl, requestBody, { headers });
+
+      // Mengambil data yang diinginkan dari tanggapan API
+      const {
+        cnote_no,
+        cnote_receiver_name,
+        pod_status,
+        cnote_pod_receiver,
+        photo,
+        last_status,
+      } = response.data.cnote;
+
+      // Gunakan operator ternary untuk menampilkan emoticon "? " jika cnote_pod_receiver adalah null
+      const podReceiver =
+        cnote_pod_receiver !== null ? cnote_pod_receiver : "?";
+
+      // Kirim tanggapan ke pengguna di WhatsApp dengan data yang diinginkan
+      const replyMessage = `===================\n🤖 Hello, *ab0t* here 🤖 \nThis is the reply to your request. \n===================\n\n📦🚚\nNomor AWB : *${cnote_no}*\nReceiver Name: ${cnote_receiver_name}\nPOD Status: ${pod_status}\nPOD Receiver: ${cnote_pod_receiver}\nLast Status: ${last_status}`;
+      message.reply(replyMessage);
+
+      // Menambahkan kode untuk mengirim foto melalui WhatsApp
+      const media = await MessageMedia.fromUrl(photo);
+      client.sendMessage(message.from, media, {
+        caption: "Hasil foto dari kurir",
+      });
+    } catch (error) {
+      // Tanggapan dari API gagal atau terjadi kesalahan
+      console.error("Error:", error.message);
+
+      // Kirim pesan kesalahan ke pengguna di WhatsApp
+      message.reply(
+        "Terjadi kesalahan saat mengambil data AWB. Mohon coba lagi nanti."
+      );
+    }
+  }
+});
+
+client.on("ready", () => {
+  console.log("Client is ready!");
+});
+
+client.initialize();

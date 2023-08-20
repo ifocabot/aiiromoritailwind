@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Borel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css">
+  
+  </head>
+  <body class="bg-blue-500">
+    <!--header-->
+    <header class="bg-blue-500">
+      <nav class="flex justify-between items-center mx-auto  w-[96%]">
+        <div class="py-6"><i class="fa-solid fa-pen-nib"></i></div>
+        <div class="nav-links duration-500 md:static absolute md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center">
+          <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-6 px-5 py-5 text-gray-300 font-bold">
+            <li class="">
+              <a class="hover:text-white" href="#">HOME</a>
+            </li>
+            <li>
+              <a class="hover:text-white" href="#">ARTIST</a>
+            </li>
+            <li>
+              <a class="hover:text-white" href="#">ABOUT</a>
+            </li>
+            <li>
+              <a class="hover:text-white" href="#">TEST</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex items-center gap-6">
+          <button class="bg-white text-blue-600 rounded-full hover:bg-yellow-400 hover:text-white px-5 py-2">Daftar</button>
+          <ion-icon name="menu" onclick="onToggleMenu(this)" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+        </div>
+      </nav>
+    </header>
+
+    
+<div class="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0 bg-white">
+  <div class="inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
+    <img
+      class="object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
+      src="src/img/1.png"
+      alt=""
+    />
+  </div>
+  <div class="relative flex flex-col items-start w-full max-w-xxl px-4 mx-auto md:px-0 lg:max-w-full lg:pl-7">
+    <div class="mb-16 lg:my-52 lg:max-h lg:max-w-3xl">
+      <h2 class="mb-5 font-sans text-2xl font-bold tracking-tight text-gray-900 sm:text-6xl sm:leading-none">
+        Aiiromori
+        <span class="inline-block text-blue-500">nih bos</span>
+      </h2>
+      <p class="pr-3 mb-5 text-base text-gray-700 md:text-xl">
+        Orang yang ngetawain dan ngejokes tentang Aiiromori mungkin dia blm ketemu langsung. Sebaik dan sehumbel itu dia sama orang baru, salah satunya ke gw yg awalnya gw fans sama dia malah bisa jadi temen. Semua yg udh ketemu dia pasti sependapat sama gw.
+      </p>
+      <div class="flex items-center">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-500 hover:bg-blue-700 focus:shadow-outline focus:outline-none"
+        >
+          Contact us
+        </a>
+        <a href="/" aria-label="" class="inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-blue-700">Pelajari lebih lanjut</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="relative bg-deep-purple-accent-400">
+  <div class="absolute inset-x-0 bottom-0">
+    <svg viewBox="0 0 224 12" fill="currentColor" class="w-full -mb-1 text-white" preserveAspectRatio="none">
+      <path d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z"></path>
+    </svg>
+  </div>
+  <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
+      <h2 class="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
+        The quick, brown fox<br class="hidden md:block" />
+        jumps over a
+        <span class="relative inline-block px-2">
+          <div class="absolute inset-0 transform -skew-x-12 bg-teal-accent-400"></div>
+          <span class="relative text-teal-900">lazy dog</span>
+        </span>
+      </h2>
+      <p class="mb-6 text-base text-indigo-100 md:text-lg">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo. Sed ut perspiciatis unde omnis.
+      </p>
+      <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
+        <input
+          placeholder="Email"
+          required=""
+          type="text"
+          class="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-deep-purple-900 focus:border-teal-accent-700 focus:outline-none focus:shadow-outline"
+        />
+        <a
+          href="/"
+          class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none"
+        >
+          Subscribe
+        </a>
+      </form>
+      <p class="max-w-md mb-10 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-16">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.
+      </p>
+      <a
+        href="/"
+        aria-label="Scroll down"
+        class="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+          <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <h1 class="font-bold">as</h1>
+  
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+  const navLinks = document.querySelector('.nav-links');
+  function onToggleMenu(e) {
+    e.name = e.name === 'menu' ? 'close' : 'menu';
+    if (e.name === 'close') {
+      navLinks.classList.add('top-[10%]');
+      navLinks.classList.add('bg-blue-600');
+      navLinks.classList.remove('top-[-100%]');
+    } else {
+      navLinks.classList.add('top-[-100%]');
+      navLinks.classList.remove('bg-blue-600');
+      navLinks.classList.remove('top-[10%]');
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel with Tailwind CSS</title>
+      <link rel="stylesheet" href="dist/custom.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</head>
+<body class="bg-gray-200">
+  <div class="w-2/3 mx-auto relative">
+    <div class="slider">
+      <div class="w-full flex-shrink-0">
+        <img src="src/img/1.png" alt="Gambar 1" class="h-full w-full object-fill object-center">
+      </div>
+      <div class="w-full flex-shrink-0">
+        <img src="src/img/2.png" alt="Gambar 2" class="h-full w-full object-fill object-center">
+      </div>
+      <div class="w-full flex-shrink-0">
+        <img src="src/img/3.png" alt="Gambar 3" class="h-full w-full object-fill object-center">
+      </div>
+    </div>
+    <div class="flex justify-center absolute bottom-0 left-0 w-full p-4">
+      <div class="button active"></div>
+      <div class="button"></div>
+      <div class="button"></div>
+      <div class="button"></div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      var button = $(".button");
+      var slider = $(".slider");
+
+      function switchToNext() {
+        var _this = $(this);
+
+        if (_this.hasClass("active")) return false;
+        else {
+          $(".button.active").removeClass("active");
+          _this.addClass("active");
+          var index = _this.index();
+          slider.slick("slickGoTo", index); // Slick Carousel function to switch slides
+        }
+      }
+
+      slider.slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: false
+      });
+
+      button.on("click", switchToNext);
+    });
+  </script>
+</body>
+</html>
